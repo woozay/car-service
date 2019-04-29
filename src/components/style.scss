@@ -7,11 +7,14 @@ $family-sans-serif: "Nunito", sans-serif;
 $red: #fe4141;
 $white: #fff;
 $black: #000;
+$blue: #1E69B8;
+$ligt-grey: #777;
 
 $navbar-item-active-background-color: $white;
-$navbar-item-color: $white;
-$navbar-item-active-color: $black;
-$navbar-background-color: $red;
+$navbar-item-color: $ligt-grey;
+$navbar-item-active-color: $blue;
+$navbar-background-color: $white;
+$navbar-height: 4.25rem;
 
 
 @import '../../node_modules/bulma/bulma.sass';
