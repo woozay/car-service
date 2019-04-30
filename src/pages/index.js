@@ -23,6 +23,36 @@ export default () => (
                 </div>
             </div>
         </section>
-
+        <section className="section">
+            <div className="container">
+                <div className="columns">
+                    <div className="column">
+                        Hi
+                    </div>
+                    <div className="column">
+                        <div className="content">
+                            <h1 className="title">VEHICLES SERVICED</h1>
+                            <h4>We provide top notch maintenance service for all types of vehicles. We are certified to service and repair the following makes:</h4>
+                            <div className="columns">
+                                <div className="column">
+                                    <ul>
+                                        <li>Audi</li>
+                                        <li>BMW</li>
+                                        <li>Mercedes</li>
+                                    </ul>
+                                </div>
+                                <div className="column">
+                                    <ul>
+                                        <li>Volkswagon</li>
+                                        <li>Toyota</li>
+                                        <li>Kia</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </Layout>
 )
