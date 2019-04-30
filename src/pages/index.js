@@ -12,16 +12,10 @@ export default () => (
                 </div>
             </div>
         </section>
-        <section class="hero">
-            <div class="hero-body">
-                <div class="container has-text-centered">
-                    <h1 className="title">WHY CHOOSE US?</h1>
-                    <h2 className="subtitle">We are one of the leading auto repair shops serving customers in Cardiff. All mechanic services are performed by highly qualified mechanics.</h2>
-                </div>
-            </div>
-        </section>
         <section className="section">
-            <div className="container">
+            <div class="container has-text-centered">
+                <h1 className="title">WHY CHOOSE US?</h1>
+                <h2 className="subtitle">We are one of the leading auto repair shops serving customers in Cardiff. All mechanic services are performed by highly qualified mechanics.</h2>
                 <div class="columns is-centered">
                     <Card title="EVERY JOB IS PERSONAL" content="If you want the quality you would expect from the dealership, but with a more personal and friendly atmosphere, you have found it." />
                     <Card title="BEST MATERIALS" content="We have invested in all the latest specialist tools and diagnostic software that is specifically tailored for the software in your vehicle." />
@@ -29,5 +23,6 @@ export default () => (
                 </div>
             </div>
         </section>
+
     </Layout>
 )
