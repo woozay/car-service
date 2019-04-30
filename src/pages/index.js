@@ -23,11 +23,11 @@ export default () => (
                 </div>
             </div>
         </section>
-        <section className="section">
+        <section className="section has-background-white-bis">
             <div className="container">
                 <div className="columns">
                     <div className="column">
-                        Hi
+                        <img src="http://quanticalabs.com/wp_themes/carservice/files/2015/05/image_01.jpg" alt="car bay" />
                     </div>
                     <div className="column">
                         <div className="content">
