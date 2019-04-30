@@ -15,6 +15,7 @@ export default () => (
         <section className="section">
             <div class="container has-text-centered">
                 <h1 className="title">WHY CHOOSE US?</h1>
+                <div class="divider"></div>
                 <h2 className="subtitle">We are one of the leading auto repair shops serving customers in Cardiff. All mechanic services are performed by highly qualified mechanics.</h2>
                 <div class="columns is-centered">
                     <Card title="EVERY JOB IS PERSONAL" content="If you want the quality you would expect from the dealership, but with a more personal and friendly atmosphere, you have found it." />
@@ -31,7 +32,8 @@ export default () => (
                     </div>
                     <div className="column">
                         <div className="content">
-                            <h1 className="title">VEHICLES SERVICED</h1>
+                            <h1 className="title has-text-centered">VEHICLES SERVICED</h1>
+                            <div class="divider"></div>
                             <h4>We provide top notch maintenance service for all types of vehicles. We are certified to service and repair the following makes:</h4>
                             <div className="columns">
                                 <div className="column">

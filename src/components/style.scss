@@ -16,5 +16,13 @@ $navbar-item-active-color: $blue;
 $navbar-background-color: $white;
 //$navbar-height: 4.25rem;
 
+.divider {
+    margin: 0 auto;
+    height: 3px;
+    border-radius: 50px;
+    background: $blue;
+    width: 60px;
+    margin-bottom: 1.5rem;
+}
 
 @import '../../node_modules/bulma/bulma.sass';
