@@ -1,11 +1,9 @@
 import React from "react"
-import Layout from "../components/layout"
-import Card from "../components/card"
-import BlogRoll from '../components/blog-roll';
+import Layout from "../components/Layout"
+import Card from "../components/Card"
+import ServicesRoll from '../components/ServicesRoll';
 
 import { FaRegUser, FaTools, FaCar } from 'react-icons/fa';
-import { IoIosPerson } from "react-icons/io";
-import { MdPersonOutline } from "react-icons/md";
 
 export default () => (
     <Layout>
@@ -62,7 +60,7 @@ export default () => (
             </div>
         </section>
         <section>
-            <BlogRoll />
+            <ServicesRoll />
         </section>
     </Layout>
 )
