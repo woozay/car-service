@@ -1,8 +1,10 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, Link } from "gatsby"
+
+import PreviewCompatibleImage from './PreviewCompatibleImage';
 
 export default () => {
-  const data = useStaticQuery(graphql`
+    const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___date] }
@@ -20,6 +22,13 @@ export default () => {
                 templateKey
                 date(formatString: "MMMM DD, YYYY")
                 featuredpost
+                featuredimage {
+                  childImageSharp {
+                    fluid(maxWidth: 400, quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
               }
           }
         }
@@ -27,6 +36,35 @@ export default () => {
     }
   `)
 
-  const { edges: posts } = data.allMarkdownRemark
-  return <div className="">{JSON.stringify(posts)}</div>
+    const { edges: services } = data.allMarkdownRemark
+    return <div className="columns is-multiline">
+        {services &&
+            services.map(({ node: post }) => (
+                <div className="is-parent column is-4" key={post.id}>
+                    <Link className="title" to={post.fields.slug}>
+                        <div className="card">
+                            <div class="card-image">
+                                {post.frontmatter.featuredimage ? (
+                                    <div className="featured-thumbnail">
+                                        <PreviewCompatibleImage
+                                            imageInfo={{
+                                                image: post.frontmatter.featuredimage,
+                                                alt: `featured image thumbnail for post ${
+                                                    post.title
+                                                    }`,
+                                            }}
+                                        />
+                                    </div>
+                                ) : null}
+                            </div>
+                            <div className="card-content has-background-light">
+                                <p className="post-meta">
+                                    {post.frontmatter.title}
+                                </p>
+                            </div>
+                        </div>
+                    </Link>
+                </div>
+            ))}
+    </div>
 }

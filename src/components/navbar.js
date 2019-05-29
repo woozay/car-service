@@ -22,6 +22,7 @@ export default () => {
                 <div className="navbar-end">
                     <Link className="navbar-item" activeClassName="is-active" to="/">Home</Link>
                     <Link className="navbar-item" activeClassName="is-active" to="/about">About</Link>
+                    <Link className="navbar-item" activeClassName="is-active" to="/services">Services</Link>
                     <Link className="navbar-item" activeClassName="is-active" to="/contact">Contact</Link>
                 </div>
             </div>
