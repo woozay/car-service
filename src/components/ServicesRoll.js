@@ -3,7 +3,7 @@ import { graphql, useStaticQuery, Link } from "gatsby"
 
 import PreviewCompatibleImage from './PreviewCompatibleImage';
 
-export default () => {
+export default ({count}) => {
     const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
@@ -39,7 +39,7 @@ export default () => {
     const { edges: services } = data.allMarkdownRemark
     return <div className="columns is-multiline">
         {services &&
-            services.map(({ node: post }) => (
+            services.slice(0, count).map(({ node: post }) => (
                 <div className="is-parent column is-4" key={post.id}>
                     <Link className="title" to={post.fields.slug}>
                         <div className="card">

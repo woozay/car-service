@@ -2,7 +2,7 @@ import React from 'react';
 import Img from 'gatsby-image';
 
 export default ({ imageInfo }) => {
-    const imageStyle = { borderRadius: '5px' }
+    const imageStyle = { }
     const { alt = '', childImageSharp, image } = imageInfo
 
     if (!!image && !!image.childImageSharp) {

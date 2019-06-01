@@ -4,14 +4,14 @@ import { Link } from "gatsby";
 export default () => {
     const [navbarActive, setNavbarActive] = useState(false);
 
-    return <nav className="navbar" role="navigation" aria-label="main navigation">
+    return <nav className="navbar is-light" role="navigation" aria-label="main navigation">
         <div className="container">
             <div className="navbar-brand">
-                <a className="navbar-item" href="https://bulma.io">
+                <Link to="/" className="navbar-item" title="Logo">
                     <p>One Stop Autos</p>
-                </a>
+                </Link>
 
-                <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" onClick={() => setNavbarActive(!navbarActive)}>
+                <a role="button" className={"navbar-burger burger " + (navbarActive ? 'is-active' : '')} aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" onClick={() => setNavbarActive(!navbarActive)}>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>

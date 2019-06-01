@@ -1,30 +1,31 @@
 import React from "react"
-import { graphql, useStaticQuery, Link } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 import Card from "../components/Card"
 import ServicesRoll from '../components/ServicesRoll';
 
 import { FaRegUser, FaTools, FaCar } from 'react-icons/fa';
 
-const IndexPage = () => (
-    <Layout>
+const IndexPage = ({ data }) => {
+    const { frontmatter } = data.markdownRemark
+    return <Layout>
         <section className="hero is-info is-large">
             <div className="hero-body">
                 <div className="container">
-                    <h1 className="title">Large title</h1>
-                    <h2 className="subtitle">Large subtitle</h2>
+                    <h1 className="title">{frontmatter.heading}</h1>
+                    <h2 className="subtitle">{frontmatter.subheading}</h2>
                 </div>
             </div>
         </section>
         <section className="section">
             <div class="container has-text-centered">
-                <h1 className="title">WHY CHOOSE US?</h1>
+                <h1 className="title">{frontmatter.main.heading}</h1>
                 <div class="divider"></div>
-                <h2 className="subtitle">We are one of the leading auto repair shops serving customers in Cardiff. All mechanic services are performed by highly qualified mechanics.</h2>
+                <h2 className="subtitle">{frontmatter.main.description}</h2>
                 <div class="columns is-centered p-t-md p-b-lg">
-                    <Card title="EVERY JOB IS PERSONAL" content="If you want the quality you would expect from the dealership, but with a more personal and friendly atmosphere, you have found it."><FaRegUser /></Card>
-                    <Card title="BEST MATERIALS" content="We have invested in all the latest specialist tools and diagnostic software that is specifically tailored for the software in your vehicle."><FaTools /></Card>
-                    <Card title="PROFESSIONAL STANDARDS" content="Our auto repair shop is capable of servicing a variety of models. We only do the work that is needed to fix your problem."><FaCar /></Card>
+                    <Card title={frontmatter.main.cards.heading1} content={frontmatter.main.cards.description1}><FaRegUser /></Card>
+                    <Card title={frontmatter.main.cards.heading2} content={frontmatter.main.cards.description2}><FaTools /></Card>
+                    <Card title={frontmatter.main.cards.heading3} content={frontmatter.main.cards.description3}><FaCar /></Card>
                 </div>
             </div>
         </section>
@@ -32,27 +33,22 @@ const IndexPage = () => (
             <div className="container">
                 <div className="columns">
                     <div className="column">
-                        <img src="http://quanticalabs.com/wp_themes/carservice/files/2015/05/image_01.jpg" alt="car bay" />
+                        <img src="/img/car-service.jpg" alt="car bay" />
                     </div>
                     <div className="column">
                         <div className="content">
-                            <h1 className="title has-text-centered">VEHICLES SERVICED</h1>
+                            <h1 className="title has-text-centered">{frontmatter.main2.heading}</h1>
                             <div class="divider"></div>
-                            <h4>We provide top notch maintenance service for all types of vehicles. We are certified to service and repair the following makes:</h4>
+                            <h4>{frontmatter.main2.description}</h4>
                             <div className="columns">
                                 <div className="column is-paddingless">
-                                    <ul>
-                                        <li>Audi</li>
-                                        <li>BMW</li>
-                                        <li>Mercedes</li>
-                                    </ul>
-                                </div>
-                                <div className="column is-paddingless">
-                                    <ul className="m-t-none">
-                                        <li>Volkswagon</li>
-                                        <li>Toyota</li>
-                                        <li>Kia</li>
-                                    </ul>
+                                <ul>
+                                {
+                                    frontmatter.main2.list.map((element, i) => {
+                                        return <li>{element.name}</li>
+                                    })
+                                }
+                                </ul>
                                 </div>
                             </div>
                         </div>
@@ -63,17 +59,58 @@ const IndexPage = () => (
         <section className="section">
             <div className="container">
                 <div className="content">
-                    <h1 className="title has-text-centered">SERVICES</h1>
+                    <h1 className="title has-text-centered">{frontmatter.main3.heading}</h1>
                     <div class="divider"></div>
-                    <h4>We offer a full range of garage services to vehicle owners located in the Cardiff area. Our professinals know how to handle a wide range of car services.</h4>
+                    <h4>{frontmatter.main3.description}</h4>
                 </div>
-                <ServicesRoll />
+                <ServicesRoll count="3" />
                 <div className="column is-12 has-text-centered">
                     <Link className="button is-outlined" to="/services">All Services</Link>
                 </div>
             </div>
         </section>
     </Layout>
-)
+}
 
 export default IndexPage
+
+export const pageQuery = graphql`
+  query IndexPageTemplate {
+    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+      frontmatter {
+        image {
+          childImageSharp {
+            fluid(maxWidth: 2048, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        heading
+        subheading
+        main {
+            heading
+            description
+            cards {
+                heading1
+                description1
+                heading2
+                description2
+                heading3
+                description3
+            }
+        }
+        main2 {
+            heading
+            description
+            list {
+                name
+            }
+        }
+        main3 {
+            heading
+            description
+        }
+      }
+    }
+  }
+`

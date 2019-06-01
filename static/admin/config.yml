@@ -1,8 +1,9 @@
 backend:
-  name: test-repo
+  name: github
+  repo: woozay/todo
 
-media_folder: static/assets
-public_folder: assets
+media_folder: static/img
+public_folder: /img
 
 collections:
   - name: "services"
@@ -14,5 +15,56 @@ collections:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "service-post"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "description", widget: "text"}
       - {label: "Featured Image", name: "featuredimage", widget: image}
       - {label: "Body", name: "body", widget: "markdown"}
+
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "src/pages/index.md"
+        label: "Landing Page"
+        name: "index"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
+          - {label: Image, name: image, widget: image}
+          - {label: Heading, name: heading, widget: string}
+          - {label: Subheading, name: subheading, widget: string}
+          - {label: Main, name: main, widget: object, fields: 
+              [
+                {label: Heading, name: heading, widget: string}, 
+                {label: Description, name: description, widget: text}, 
+                {
+                  label: Cards, name: cards, widget: object, 
+                  fields: [
+                    {label: heading1, name: heading1, widget: string},
+                    {label: description1, name: description1, widget: string},
+                    {label: heading2, name: heading2, widget: string},
+                    {label: description2, name: description2, widget: string},
+                    {label: heading3, name: heading3, widget: string},
+                    {label: description3, name: description3, widget: string},
+                  ]
+                }
+              ]
+            }
+          - {
+              label: Main2, name: main2, widget: object, fields: 
+              [
+                {label: Heading, name: heading, widget: string}, 
+                {label: Description, name: description, widget: text}, 
+                {
+                  label: List, name: list, widget: list, 
+                  fields: [
+                    {label: name, name: name, widget: string},
+                  ]
+                }
+              ]
+            }
+      - file: "src/pages/about/index.md"
+        label: "About"
+        name: "about"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
