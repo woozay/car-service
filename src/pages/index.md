@@ -36,5 +36,9 @@ main2:
     - name: Kia
     - name: Hyundai
     - name: Ford
+main3:
+  description: >-
+    We offer a full range of garage services to vehicle owners located in the Cardiff area. Our professinals know how to handle a wide range of car services.
+  heading: SERVICES
 ---
 
