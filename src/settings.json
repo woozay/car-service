@@ -1,3 +1,10 @@
 {
-  "site_title": "One Stop Autos"
+  "title": "One Stop Autos",
+  "description": "At One Stop Autos in Cardiff, we cater for all of your motoring needs. You will be warmly welcomed and be given the advice and assistance you require, courtesy of our friendly and professional staff.",
+  "companyName": "One Stop Autos Ltd.",
+  "address": "167 Sloper Rd",
+  "city": "Cardiff",
+  "postcode": "CF11 8AB",
+  "tel": "029 2022 9988",
+  "email": "someone@example.com"
 }

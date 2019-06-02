@@ -87,4 +87,11 @@ collections:
         file: 'src/settings.json'
         description: 'General Site Settings'
         fields:
-          - { label: 'Global title', name: 'site_title', widget: 'string' }
+          - { label: 'Global title', name: 'title', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'string' }
+          - { label: 'Company Name', name: 'companyName', widget: 'string' }
+          - { label: 'Address Line 1', name: 'address', widget: 'string' }
+          - { label: 'City', name: 'city', widget: 'string' }
+          - { label: 'Postcode', name: 'postcode', widget: 'string' }
+          - { label: 'Tel', name: 'tel', widget: 'string' }
+          - { label: 'Email', name: 'email', widget: 'string' }

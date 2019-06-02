@@ -1,8 +1,7 @@
+const settings = require('./src/settings.json');
 module.exports = {
     siteMetadata: {
-        title: 'One Stop Autos',
-        description:
-            'We are one stop autos'
+        ...settings
     },
     plugins: [
         'gatsby-plugin-react-helmet',
