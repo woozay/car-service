@@ -23,6 +23,7 @@ export default () => {
                 </div>
                 <div className="column">
                     <div className="content">
+                        <h4>Contact</h4>
                         <ContactCard />
                     </div>
                 </div>
