@@ -1,8 +1,9 @@
 ---
 templateKey: index-page
 image: /img/engine-diag.jpg
-heading: Great coffee with a conscience
-subheading: Support sustainable farming while enjoying a cup
+image2: /img/car-service.jpg
+heading: One Stop Autos
+subheading: Always here to service your car
 main:
   cards:
     description1: >-

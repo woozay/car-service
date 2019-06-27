@@ -25,32 +25,39 @@ const IndexPage = ({ data }) => {
         "telephone": siteMetadata.tel,
         "openingHoursSpecification": [
             {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday"
-              ],
-              "opens": siteMetadata.monFriOpening,
-              "closes": siteMetadata.monFriClosing
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday"
+                ],
+                "opens": siteMetadata.monFriOpening,
+                "closes": siteMetadata.monFriClosing
             },
             {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": [
-                "Saturday"
-              ],
-              "opens": siteMetadata.satOpening,
-              "closes": siteMetadata.satClosing
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Saturday"
+                ],
+                "opens": siteMetadata.satOpening,
+                "closes": siteMetadata.satClosing
             }
-          ]
+        ]
     }
     return <Layout>
         <Helmet>
             <script type="application/ld+json">{JSON.stringify(structuredJSON)}</script>
         </Helmet>
-        <section className="hero is-info is-large">
+        <section className="hero is-info is-medium" style={{
+            backgroundImage: `url(${
+                !!frontmatter.image.childImageSharp ? frontmatter.image.childImageSharp.fluid.src : frontmatter.image
+                })`,
+            backgroundPosition: `top left`,
+            backgroundSize: 'cover',
+            backgroundAttachment: `fixed`,
+        }}>
             <div className="hero-body">
                 <div className="container">
                     <h1 className="title">{frontmatter.heading}</h1>
@@ -74,7 +81,9 @@ const IndexPage = ({ data }) => {
             <div className="container">
                 <div className="columns">
                     <div className="column">
-                        <img src="/img/car-service.jpg" alt="car bay" />
+                        <img src={
+                            !!frontmatter.image2.childImageSharp ? frontmatter.image2.childImageSharp.fluid.src : frontmatter.image2
+                        } alt="car bay" />
                     </div>
                     <div className="column">
                         <div className="content">
@@ -136,6 +145,13 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         image {
+          childImageSharp {
+            fluid(maxWidth: 2048, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        image2 {
           childImageSharp {
             fluid(maxWidth: 2048, quality: 100) {
               ...GatsbyImageSharpFluid
