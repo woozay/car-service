@@ -1,14 +1,55 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
+import Helmet from 'react-helmet'
+import { FaRegUser, FaTools, FaCar } from 'react-icons/fa';
+
 import Layout from "../components/Layout"
 import Card from "../components/Card"
 import ServicesRoll from '../components/ServicesRoll';
 
-import { FaRegUser, FaTools, FaCar } from 'react-icons/fa';
-
 const IndexPage = ({ data }) => {
-    const { frontmatter } = data.markdownRemark
+    const { frontmatter } = data.markdownRemark;
+    const { siteMetadata } = data.site
+    const structuredJSON = {
+        "@context": "http://schema.org",
+        "@type": "AutoRepair",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "GB",
+            "addressLocality": siteMetadata.city,
+            "streetAddress": siteMetadata.address,
+            "postalCode": siteMetadata.postcode
+        },
+        "description": siteMetadata.description,
+        "name": siteMetadata.title,
+        "telephone": siteMetadata.tel,
+        "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+              ],
+              "opens": siteMetadata.monFriOpening,
+              "closes": siteMetadata.monFriClosing
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Saturday"
+              ],
+              "opens": siteMetadata.satOpening,
+              "closes": siteMetadata.satClosing
+            }
+          ]
+    }
     return <Layout>
+        <Helmet>
+            <script type="application/ld+json">{JSON.stringify(structuredJSON)}</script>
+        </Helmet>
         <section className="hero is-info is-large">
             <div className="hero-body">
                 <div className="container">
@@ -42,13 +83,13 @@ const IndexPage = ({ data }) => {
                             <h4>{frontmatter.main2.description}</h4>
                             <div className="columns">
                                 <div className="column is-paddingless">
-                                <ul>
-                                {
-                                    frontmatter.main2.list.map((element, i) => {
-                                        return <li>{element.name}</li>
-                                    })
-                                }
-                                </ul>
+                                    <ul>
+                                        {
+                                            frontmatter.main2.list.map((element, i) => {
+                                                return <li>{element.name}</li>
+                                            })
+                                        }
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -76,6 +117,22 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
+    site {
+          siteMetadata {
+            title
+            companyName
+            description
+            address
+            city
+            postcode
+            tel
+            email
+            monFriOpening
+            monFriClosing
+            satOpening
+            satClosing
+          }
+        }
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         image {

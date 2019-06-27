@@ -14,6 +14,11 @@ const useSiteMetadata = () => {
             postcode
             tel
             email
+            monFriOpening
+            monFriClosing
+            satOpening
+            satClosing
+            
           }
         }
       }

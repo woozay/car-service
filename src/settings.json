@@ -6,5 +6,9 @@
   "city": "Cardiff",
   "postcode": "CF11 8AB",
   "tel": "029 2022 9988",
-  "email": "someone@example.com"
+  "email": "someone@example.com",
+  "monFriOpening":"08:00",
+  "monFriClosing":"18:00",
+  "satOpening":"10:00",
+  "satClosing":"14:00"
 }

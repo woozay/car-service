@@ -95,3 +95,7 @@ collections:
           - { label: 'Postcode', name: 'postcode', widget: 'string' }
           - { label: 'Tel', name: 'tel', widget: 'string' }
           - { label: 'Email', name: 'email', widget: 'string' }
+          - { label: 'Monday to Friday Opening Time', name: 'monFriOpening', widget: 'string' }
+          - { label: 'Monday to Friday Closing Time', name: 'monFriClosing', widget: 'string' }
+          - { label: 'Saturday Opening Time', name: 'satOpening', widget: 'string' }
+          - { label: 'Saturday Closing Time', name: 'satClosing', widget: 'string' }
